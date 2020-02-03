@@ -1,8 +1,10 @@
 #!/bin/sh
 
+# Docker Imageを引数として受け取り
 IMAGE_NAME=$1
 shift
 
+# Docker Imageが空だとexit
 if [ "${IMAGE_NAME}" = "" ]; then
   exit 1
 fi
