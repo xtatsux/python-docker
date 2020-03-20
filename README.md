@@ -6,23 +6,17 @@ Pythonの実行環境をDockerで構築する試み。
 
 # usage
 
-* `.env.template`ファイルを`.env`に変更してファイル内容を書き換える。
-  * `docker-compose.yml`内の`container_name`、`working_dir`、`volumes`を変数化するために利用している
-  * 変数化が必要なければ、`docker-compose.yml`に直接書けばよい
+1. `.env.template`ファイルを`.env`に変更してファイル内容を書き換える
+   * `docker-compose.yml`内の`container_name`、`working_dir`、`volumes`を変数化するために利用している
+   * 変数化が必要なければ、`docker-compose.yml`に直接書けばよい
+2. コンテナを立ち上げ
+3. コンテナに入る
+4. スクリプトを実行する
 
-    $ mv .env.template .env
-
-* コンテナを立ち上げ
-
-    $  docker-compose up -d --build
-
-* コンテナに入る
-
-    $  docker-compose exec python3 bash
-
-* スクリプトを実行する
-
-    $  cat latlng.csv | ./rev_geocd_latlngtopostalcd.py 
+        $ mv .env.template .env
+        $ docker-compose up -d --build
+        $ docker-compose exec python3 bash
+        $ cat latlng.csv | ./rev_geocd_latlngtopostalcd.py 
 
 # Structure
 
