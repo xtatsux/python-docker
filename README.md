@@ -4,7 +4,7 @@ Pythonの実行環境をDockerで構築する試み。
 
 * Dockerfileにて必要となるpythonモジュールをpipでインストール
   * Python3.xを前提にしている
-* `docker run` のラッパースクリプトとして、run.shを用意
+* `docker run` のラッパースクリプトとして、run.shを用意
 * run.shの中で以下を考慮
   * カレントディレクトリをdocker側でマウント
   * ワーキングディレクトリを指定
