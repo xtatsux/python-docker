@@ -4,7 +4,7 @@ Pythonの実行環境をDockerで構築する試み。
 
 * Python3.xを前提にした実行環境
 
-# usage
+# Usage
 
 1. `.env.template`ファイルを`.env`に変更してファイル内容を書き換える
    * `docker-compose.yml`内の`container_name`、`working_dir`、`volumes`を変数化するために利用している
@@ -14,6 +14,7 @@ Pythonの実行環境をDockerで構築する試み。
 4. スクリプトを実行する
 
         $ mv .env.template .env
+        $ code .env
         $ docker-compose up -d --build
         $ docker-compose exec python3 bash
         $ cat latlng.csv | ./rev_geocd_latlngtopostalcd.py 
@@ -29,9 +30,9 @@ python-docker
 └── rev_geocd_latlngtopostalcd.py :サンプルスクリプト
 ```
 
-`rev_geocd_latlngtopostalcd.py`は以前作成した、緯度経度から郵便番号を割り出すためのスクリプト。
-Google Maps APIを利用して、リバースジオコーディングをしている。
-API利用にあたり、`docker-compose.yml`内の`env_file`オプションでAPIキーの環境変数を読み込み、コンテナに渡している。
+* `rev_geocd_latlngtopostalcd.py`は以前作成した、緯度経度から郵便番号を割り出すためのスクリプト。Google Maps APIを利用して、リバースジオコーディングをしている。
+  * API利用にあたり、`docker-compose.yml`内の`env_file`オプションでAPIキーの環境変数を読み込み、コンテナに渡している
+
 私が書くスクリプトではよく環境変数を利用してこうしたキー渡しをするので、このような構成とした。
 
 # reference
