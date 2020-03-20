@@ -1,0 +1,14 @@
+version: '3'
+services:
+  python3:
+    env_file:
+      - envfile.env
+    restart: always
+    container_name: ${IMAGE_NAME}
+    build:
+        context: .
+        dockerfile: Dockerfile
+    working_dir: '/usr/local/src/${IMAGE_NAME}'
+    tty: true
+    volumes:
+      - .:/usr/local/src/${IMAGE_NAME}
