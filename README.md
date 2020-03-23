@@ -6,6 +6,15 @@ Pythonの実行環境をDockerで構築する試み。
 
 # Usage
 
+## Visual Studio Code - Remote Developmentを利用する場合（簡単なのでおすすめ）
+
+1. VSCodeで、このフォルダを開く
+2. コンテナを起動して接続した上で、VSCodeが開く
+3. 統合ターミナルなどを起動して、コンテナ上でPythonスクリプト開発
+
+
+## コマンドラインでDockerを起動して開発する場合
+
 1. `.env.template`ファイルを`.env`に変更してファイル内容を書き換える
    * `docker-compose.yml`内の`container_name`、`working_dir`、`volumes`を変数化するために利用している
    * 変数化が必要なければ、`docker-compose.yml`に直接書けばよい
