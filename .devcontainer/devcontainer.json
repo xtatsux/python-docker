@@ -1,0 +1,14 @@
+{
+    "name": "python3-on-docker",
+    "dockerComposeFile": [
+        "../docker-compose.yml"
+    ],
+    "service": "python3",
+    "extensions": [
+    "ms-python.python",
+    "eamodio.gitlens",
+    "donjayamanne.githistory"
+    ],
+    "postCreateCommand": "pip install -r requirements.txt",
+    "workspaceFolder": "/usr/local/src/python-docker"
+}
