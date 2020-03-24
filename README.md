@@ -22,8 +22,6 @@ Pythonの実行環境をDockerで構築する試み。
 3. コンテナに入る
 4. スクリプトを実行する
 
-        $ mv .env.template .env
-        $ code .env
         $ docker-compose up -d --build
         $ docker-compose exec python3 bash
         $ cat latlng.csv | ./rev_geocd_latlngtopostalcd.py 
@@ -34,7 +32,6 @@ Pythonの実行環境をDockerで構築する試み。
 python-docker
 ├── Dockerfile
 ├── docker-compose.yml
-├── .env.template :.envにrenameして利用する
 ├── envfile.env.template :envfile.envにrenameして利用する
 └── rev_geocd_latlngtopostalcd.py :サンプルスクリプト
 ```
