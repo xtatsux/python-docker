@@ -4,11 +4,11 @@ services:
     env_file:
       - envfile.env
     restart: always
-    container_name: ${IMAGE_NAME}
+    container_name: python-docker
     build:
         context: .
         dockerfile: Dockerfile
-    working_dir: '/usr/local/src/${IMAGE_NAME}'
+    working_dir: '/home/vscode/work'
     tty: true
     volumes:
-      - .:/usr/local/src/${IMAGE_NAME}
+      - .:/home/vscode/work

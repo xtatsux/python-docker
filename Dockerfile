@@ -1,18 +1,28 @@
 FROM python:3
 
-USER root
+ENV DEBIAN_FRONTEND=noninteractive
 
-RUN apt-get update
-RUN apt-get -y install locales && \
-    localedef -f UTF-8 -i ja_JP ja_JP.UTF-8
-ENV LANG ja_JP.UTF-8
-ENV LANGUAGE ja_JP:ja
-ENV LC_ALL ja_JP.UTF-8
-ENV TZ JST-9
-ENV TERM xterm
+ARG USERNAME=vscode
+ARG USER_UID=1000
+ARG USER_GID=$USER_UID
 
-RUN apt-get install -y vim less
-RUN pip install --upgrade pip
-RUN pip install --upgrade setuptools
+ENV PIP_TARGET=/usr/local/share/pip-global
+ENV PYTHONPATH=${PYTHONPATH}:${PIP_TARGET}
+ENV PATH=${PATH}:${PIP_TARGET}/bin
 
-RUN pip install certifi==2018.10.15 chardet==3.0.4 googlemaps==3.0.2 idna==2.7 requests==2.20.0 urllib3==1.24
+RUN apt-get update \
+    && apt-get -y install --no-install-recommends apt-utils dialog 2>&1 \
+    && apt-get -y install git iproute2 procps lsb-release \
+    && pip --disable-pip-version-check --no-cache-dir install pylint \
+    && groupadd --gid $USER_GID $USERNAME \
+    && useradd -s /bin/bash --uid $USER_UID --gid $USER_GID -m $USERNAME \
+    && apt-get install -y sudo \
+    && echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME\
+    && chmod 0440 /etc/sudoers.d/$USERNAME \
+    && mkdir -p /usr/local/share/pip-global \
+    && chown ${USERNAME}:root /usr/local/share/pip-global \
+    && apt-get autoremove -y \
+    && apt-get clean -y \
+    && rm -rf /var/lib/apt/lists/* \
+    && mkdir -p /home/vscode/work \
+ENV DEBIAN_FRONTEND=dialog

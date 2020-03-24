@@ -1,5 +1,14 @@
 {
     "name": "python3-on-docker",
+	"settings": { 
+		"terminal.integrated.shell.linux": "/bin/bash",
+		"python.pythonPath": "/usr/local/bin/python",
+		"python.linting.enabled": true,
+		"python.linting.pylintEnabled": true,
+		"python.linting.pylintPath": "/usr/local/share/pip-global/bin/pylint"
+    },
+    "appPort": [ 9000 ],
+    "remoteUser": "vscode",
     "dockerComposeFile": [
         "../docker-compose.yml"
     ],
@@ -10,5 +19,5 @@
     "donjayamanne.githistory"
     ],
     "postCreateCommand": "pip install -r requirements.txt",
-    "workspaceFolder": "/usr/local/src/python-docker"
+    "workspaceFolder": "/home/vscode/work"
 }
